@@ -2,6 +2,7 @@ import netmiko
 import re
 
 
+# Заполняем IP, username, password, port
 cisco_wlc = {
     'device_type': 'cisco_wlc',
     'ip':   '192.168.1.1',
@@ -15,8 +16,9 @@ cisco_wlc = {
 net_connect = netmiko.ConnectHandler(**cisco_wlc)
 output = net_connect.send_command('show ap summary')
 print(output)
-all_ap_lists = re.findall('aumawifi...', output)
-answer = input('Input AP names to reboot them or enter \"ALL\" to reboot all points:\nExample: point1 point2 point5\n').split()
+# Ищем точки доступа по маске wifipoint...
+all_ap_lists = re.findall('wifipoint...', output)
+answer = input('Input AP names to reboot them or enter \"ALL\" to reboot all points:\nExample: point1 point2 point3\n').split()
 if 'all' in [_.lower() for _ in answer]:
     for ap in all_ap_lists:
         net_connect.send_config_set(['config ap reset {}'.format(ap), 'y'])

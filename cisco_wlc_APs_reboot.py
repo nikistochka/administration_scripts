@@ -16,7 +16,7 @@ cisco_wlc = {
 net_connect = netmiko.ConnectHandler(**cisco_wlc)
 output = net_connect.send_command('show ap summary')
 print(output)
-# Ищем точки доступа по маске wifipoint...
+# Ищем точки доступа по маске, wifipoint123, wifipoint456
 all_ap_lists = re.findall('wifipoint...', output)
 answer = input('Input AP names to reboot them or enter \"ALL\" to reboot all points:\nExample: point1 point2 point3\n').split()
 if 'all' in [_.lower() for _ in answer]:

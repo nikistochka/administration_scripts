@@ -1,1 +1,1 @@
-# administration_scripts
+# Scripts for administration tasks

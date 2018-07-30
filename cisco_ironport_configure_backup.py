@@ -18,8 +18,7 @@ backup_path = '\\backup\\'
 try:
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(ironport, ssh_port, ironport_username, ironport_password,
-                   look_for_keys=False, allow_agent=False)
+    ssh.connect(ironport, ssh_port, ironport_username, ironport_password)
     with ssh.invoke_shell() as ssh:
         time.sleep(5)
         ssh.send('saveconfig\n')

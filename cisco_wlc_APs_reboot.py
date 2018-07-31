@@ -3,7 +3,7 @@ import netmiko
 import re
 
 
-# Заполняем IP, username, password, port
+# Заполняем IP, username, port
 cisco_wlc = {
     'device_type': 'cisco_wlc',
     'ip':   '192.168.1.1',

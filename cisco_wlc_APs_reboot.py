@@ -1,3 +1,4 @@
+import getpass
 import netmiko
 import re
 
@@ -7,7 +8,7 @@ cisco_wlc = {
     'device_type': 'cisco_wlc',
     'ip':   '192.168.1.1',
     'username': 'adminlogin',
-    'password': 'PASSWORD',
+    'password': getpass.getpass(),
     'port' : 22,          # optional, defaults to 22
     'secret': '',     # optional, defaults to ''
     'verbose': False,       # optional, defaults to False

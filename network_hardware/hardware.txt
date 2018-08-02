@@ -1,1 +1,5 @@
-
+# comments allowed
+# ip ssh_port username password
+192.168.1.1 22 manager PASSWORD
+192.168.1.2 22 manager qwerty123
+192.168.1.3 22 admin password123

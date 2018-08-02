@@ -27,7 +27,7 @@ with open('hardware.txt', 'r') as hardware_file:
             time.sleep(5)
             channel.send('\n')
             time.sleep(2)
-            channel.send('copy running-config tftp {} {}\n'.format(tftp_server, device + '_' + time.strftime("%Y%m%d-%H%M%S")))
+            channel.send('copy running-config tftp {} {}\n'.format(tftp_server, device + '_' + time.strftime("%Y%m%d-%H%M%S") + '.xml'))
             time.sleep(10)
             result = channel.recv(2000).decode('utf-8')
             print(result)

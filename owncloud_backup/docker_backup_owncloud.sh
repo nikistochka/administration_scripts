@@ -10,6 +10,13 @@ CONTAINER_NAME_MYSQL=owncloud_db_1
 MYSQL_PASSWORD=password
 PATH_TO_BACKUPS_MYSQL=/backup/owncloud_mysql
 
+# Make dir if does not exist:
+for PATH_VAR in ${PATH_TO_BACKUPS_FILES} ${PATH_TO_BACKUPS_MYSQL}
+do
+  if [[ ! -d ${PATH_VAR} ]]; then
+    mkdir ${PATH_VAR}
+  fi
+done
 
 docker stop ${CONTAINER_NAME_OWNCLOUD};
 docker run --rm --volumes-from ${CONTAINER_NAME_OWNCLOUD} -v ${PATH_TO_BACKUPS_FILES}:/backup busybox tar cvf /backup/files_$(date +%Y%m%d_%H-%M-%S).tar ${PATH_TO_FILES};

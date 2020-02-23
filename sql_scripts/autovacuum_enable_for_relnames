@@ -1,0 +1,11 @@
+DO
+$$
+DECLARE
+  row record;
+BEGIN
+  FOR row IN SELECT relname FROM pg_class WHERE reloptions='{autovacuum_enabled=false}'
+  LOOP
+    EXECUTE 'ALTER TABLE public.' || quote_ident(row.relname) || ' SET (autovacuum_enabled = true);';
+  END LOOP;
+END;
+$$;
